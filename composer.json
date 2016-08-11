@@ -6,7 +6,7 @@
   "require":{
       "php":">=5.4.0",
       "ext-swoole":">=1.7.17",
-      "pda/pheanstalk":"master-dev"
+      "pda/pheanstalk":"~3.0"
   },
   "autoload":{
     "psr-4":{
