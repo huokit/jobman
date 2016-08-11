@@ -1,12 +1,15 @@
 {
   "name":"huokit/jobman",
+  "type": "library",
   "description":"HuoKit is php toolkit",
   "keywords":["huokit","jobman","swoole"],
   "authors":[{"name":"abc","email":"abc@163.com"}],
+  "license": "MIT",
   "require":{
       "php":">=5.4.0",
       "ext-swoole":">=1.7.17",
-      "pda/pheanstalk":"~3.0"
+      "pda/pheanstalk":"~3.0",
+      "psr/log": "^1.0.0 || dev-master"
   },
   "autoload":{
     "psr-4":{
