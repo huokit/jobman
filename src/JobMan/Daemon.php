@@ -7,7 +7,7 @@
  */
 namespace HuoKit\JobMan;
 
-use SwooleProcess as SwooleProcess;
+use swoole_process as SwooleProcess;
 
 class Daemon
 {
@@ -168,10 +168,16 @@ class Daemon
     {
         $process = new SwooleProcess(function($worker)use($id,$task){
             $worker->name($this->master_process_name . ':' . $task['name'] .':child-crontab-process');
-            $class = $task['class'];
-            $man = new $class();
-            $man->setLogger($this->logger);
-            $man->handle();
+            if(isset($task['class'])){
+                $class = $task['class'];
+                $man = new $class();
+                $man->setLogger($this->logger);
+                $man->handle();
+            }elseif(isset($task['command'])){
+                $worker->exec($task['command']);
+                //$this->logger->info($task['command']);
+            }
+
             $worker->exit(1);
         });
         $pid = $process->start();

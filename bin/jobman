@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+if (empty($argv[1]) || !in_array($argv[1], array('start', 'stop', 'restart', 'status')) ) {
+    echo "Please input: bin/jobman start|stop|restart\n";
+    exit();
+}
+
+$config = include $argv[2];
+
+$daemon = new HuoKit\JobMan\Daemon($config);
+if($argv[1]=='start'){
+	$daemon->start();
+}elseif($argv[1]=='stop'){
+    $daemon->stop();
+}elseif($argv[1]=='restart'){
+    $daemon->restart();
+}
