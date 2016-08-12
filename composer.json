@@ -12,7 +12,7 @@
   },
   "autoload":{
     "psr-4":{
-      "HuoKit\\JobMan\\":"src"
+      "HuoKit\\JobMan\\":"src/JobMan"
     }
   }
 }
